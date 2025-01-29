@@ -84,8 +84,6 @@ float printShoppingCart(const ShoppingCart* pCart)
 
 	L_print(&pCart->shoppingItems, printItem);
 
-	/*printf("Total bill to pay: %.2f\n", price);*/
-
 	return price;
 }
 

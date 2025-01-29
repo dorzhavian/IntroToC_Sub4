@@ -16,3 +16,6 @@ float			printShoppingCart(const ShoppingCart* pCart);
 int				insertNewShoppingItemToList(LIST* pShoppingList, ShoppingItem* pitem);
 
 void			freeShoppingCart(ShoppingCart* pCart);
+
+
+#define DETAIL_PRINT

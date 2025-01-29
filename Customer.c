@@ -160,16 +160,20 @@ void pay(Customer* pCustomer)
 	pCustomer->pCart = NULL;
 }
 
-void	printCustomerCart(const Customer* pCustomer)
+void	printCustomerCart(const Customer* pCustomer)          
 {
 	float price = printShoppingCart(pCustomer->pCart);
 	float discount = pCustomer->vTable.discount(pCustomer);
-	if (discount == 0)
-	printf("Total price for %s is %.2f\n", pCustomer->name, price);
-	else {
-		price -= price * (discount / 100);
-		printf("Total price for %s is %.2f, after discount of %.2f%%\n", pCustomer->name, price, discount);
-	}
+
+	#ifdef DETAIL_PRINT
+		if (discount == 0)
+			printf("Total price for %s is %.2f\n", pCustomer->name, price);
+		else 
+		{
+			price -= price * (discount / 100);
+			printf("Total price for %s is %.2f, after discount of %.2f%%\n", pCustomer->name, price, discount);
+		}
+	#endif
 }
 
 float	customerDiscount(const Customer* pCustomer)
