@@ -6,6 +6,8 @@
 #include "FileHelper.h"
 #include "SuperFile.h"
 #include "Product.h"
+#include "myMacros.h"
+
 
 
 int	saveSuperMarketToFile(const SuperMarket* pMarket, const char* fileName,
@@ -13,30 +15,35 @@ int	saveSuperMarketToFile(const SuperMarket* pMarket, const char* fileName,
 {
 	FILE* fp;
 	fp = fopen(fileName, "wb");
-	if (!fp) {
-		printf("Error open supermarket file to write\n");
-		return 0;
-	}
+
+	CHECK_MSG_RETURN_0(fp, "Error open supermarket file to write\n")
+	//if (!fp) {
+	//	printf("Error open supermarket file to write\n");
+	//	return 0;
+	//}
 
 	if (!writeStringToFile(pMarket->name, fp, "Error write supermarket name\n"))
-	{
-		fclose(fp);
-		return 0;
-	}
+		CLOSE_RETURN_0(fp)
+	//{
+	//	fclose(fp);
+	//	return 0;
+	//}
 
 	if (!writeIntToFile(pMarket->productCount, fp, "Error write product count\n"))
-	{
-		fclose(fp);
-		return 0;
-	}
+		CLOSE_RETURN_0(fp)
+	//{
+	//	fclose(fp);
+	//	return 0;
+	//}
 
 	for (int i = 0; i < pMarket->productCount; i++)
 	{
 		if (!saveProductToFile(pMarket->productArr[i], fp))
-		{
-			fclose(fp);
-			return 0;
-		}
+			CLOSE_RETURN_0(fp)
+		//{
+		//	fclose(fp);
+		//	return 0;
+		//}
 	}
 
 	fclose(fp);
@@ -51,35 +58,40 @@ int	loadSuperMarketFromFile(SuperMarket* pMarket, const char* fileName,
 {
 	FILE* fp;
 	fp = fopen(fileName, "rb");
-	if (!fp)
-	{
-		printf("Error open company file\n");
-		return 0;
-	}
+
+	CHECK_MSG_RETURN_0(fp, "Error open company file\n")
+	//if (!fp)
+	//{
+	//	printf("Error open company file\n");
+	//	return 0;
+	//}
 
 	pMarket->name = readStringFromFile(fp, "Error reading supermarket name\n");
 	if (!pMarket->name)
-	{
-		fclose(fp);
-		return 0;
-	}
+		CLOSE_RETURN_0(fp)
+	//{
+	//	fclose(fp);
+	//	return 0;
+	//}
 
 	int count;
 
 	if (!readIntFromFile(&count, fp, "Error reading product count\n"))
-	{
-		free(pMarket->name);
-		fclose(fp);
-		return 0;
-	}
+		FREE_CLOSE_FILE_RETURN_0(pMarket->name, fp)
+	//{
+	//	free(pMarket->name);
+	//	fclose(fp);
+	//	return 0;
+	//}
 
 	pMarket->productArr = (Product**)malloc(count * sizeof(Product*));
 	if (!pMarket->productArr)
-	{
-		free(pMarket->name);
-		fclose(fp);
-		return 0;
-	}
+		FREE_CLOSE_FILE_RETURN_0(pMarket->name, fp)
+	//{
+	//	free(pMarket->name);
+	//	fclose(fp);
+	//	return 0;
+	//}
 
 	pMarket->productCount = count;
 
@@ -87,11 +99,12 @@ int	loadSuperMarketFromFile(SuperMarket* pMarket, const char* fileName,
 	{
 		pMarket->productArr[i] = (Product*)malloc(sizeof(Product));
 		if (!pMarket->productArr[i])
-		{
-			free(pMarket->name);
-			fclose(fp);
-			return 0;
-		}
+			FREE_CLOSE_FILE_RETURN_0(pMarket->name, fp)
+		//{
+		//	free(pMarket->name);
+		//	fclose(fp);
+		//	return 0;
+		//}
 
 		if (!loadProductFromFile(pMarket->productArr[i], fp))
 		{

@@ -92,6 +92,9 @@
     <ClInclude Include="SuperFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="myMacros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Customers.txt" />

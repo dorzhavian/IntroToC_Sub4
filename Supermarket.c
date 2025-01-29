@@ -10,6 +10,7 @@
 #include "ShoppingCart.h"
 #include "FileHelper.h"
 #include "SuperFile.h"
+#include "myMacros.h"
 
 static const char* sortOptStr[eNofSortOpt] = { "None", "Name", "Count", "Price" };
 
@@ -32,8 +33,10 @@ int initSuperMarket(SuperMarket* pMarket, const char* fileName,
 
 	pMarket->name = getStrExactLength("Enter market name");
 
-	if (!pMarket->name)
-		return 0;
+	CHECK_RETURN_0(pMarket->name)
+	//if (!pMarket->name)
+		//return 0;
+
 	return 1;
 }
 
@@ -219,8 +222,9 @@ int	manageShoppingCart(SuperMarket* pMarket)
 	Customer* pCustomer = doPrintCart(pMarket);
 	char answer;
 
-	if(!pCustomer)
-		return 0;
+	CHECK_RETURN_0(pCustomer)
+	//if(!pCustomer)
+	//	return 0;
 
 	printf("Do you want to pay for the cart? y/Y, anything else to cancel shopping!\t");
 	do {

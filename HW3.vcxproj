@@ -147,6 +147,7 @@
     <ClInclude Include="General.h" />
     <ClInclude Include="GeneralList.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="myMacros.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="ShoppingCart.h" />
     <ClInclude Include="ShoppingItem.h" />
