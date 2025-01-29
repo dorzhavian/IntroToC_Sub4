@@ -68,7 +68,7 @@ int main()
 			break;
 
 		case EXIT:
-			printf("Bye bye\n");
+			printMessage("Thank", "You", "For", "Shopping", "With", "Us", NULL);
 			stop = 1;
 			break;
 
@@ -84,6 +84,7 @@ int main()
 		printf("Error saving supermarket to file\n");
 
 	freeMarket(&market);
+
 	
 	return 1;
 }

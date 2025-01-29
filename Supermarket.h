@@ -1,4 +1,7 @@
 #pragma once
+
+#include <stdarg.h>
+
 #include "Customer.h"
 #include "Product.h"
 #include "ShoppingCart.h"
@@ -54,3 +57,4 @@ void		freeProducts(SuperMarket* pMarket);
 void		freeCustomers(SuperMarket* pMarket);
 void		handleCustomerStillShoppingAtExit(SuperMarket* pMarket);
 
+void		printMessage(const char* str, ...);

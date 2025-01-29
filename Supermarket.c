@@ -588,3 +588,19 @@ void handleCustomerStillShoppingAtExit(SuperMarket* pMarket)
 		}
 	}
 }
+
+void printMessage(const char* str, ...)
+{
+	va_list strings;
+	char* currStr;
+
+	va_start(strings, str);
+	currStr = str;
+
+	while (currStr)
+	{
+		printf("%s ", currStr);
+		currStr = va_arg(strings, char*);
+	}
+	va_end(strings);
+}
