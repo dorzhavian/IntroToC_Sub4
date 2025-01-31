@@ -11,3 +11,5 @@ int		readFixSizeStrFromFile(char* arr, FILE* fp, const char* msg);
 int		readCharsFromFile(char* arr, int size, FILE* fp, const char* msg);
 int		readIntFromFile(int* val, FILE* fp, const char* msg);
 int		readFloatFromFile(float* val, FILE* fp, const char* msg);
+
+char* readNameFromCompressedFile(FILE* fp, int nameLen, const char* msg);

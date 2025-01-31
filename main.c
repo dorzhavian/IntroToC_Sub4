@@ -7,13 +7,27 @@
 #include "Supermarket.h"
 #include "SuperFile.h"
 
-int main()
+int main(int argc, char* argv[])
 {
 	SuperMarket	market;
 
 	srand((unsigned int)time(NULL));
 
-	if (!initSuperMarket(&market, SUPER_FILE_NAME, CUSTOMER_FILE_NAME))
+	if (argc != 3)
+	{
+		printf("Should enter 0 for binary file or 1 for compressed binary file");
+		system("pause");
+		return;
+	}
+	int opt;
+	if (sscanf(argv[1], "%d", &opt) != 1)
+	{
+		printf("Should enter 0 for binary file or 1 for compressed binary file");
+		system("pause");
+		return;
+	}
+
+	if (!initSuperMarket(&market, argv[1], CUSTOMER_FILE_NAME))
 	{
 		printf("error init Super Market");
 		return 0;

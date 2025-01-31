@@ -6,6 +6,7 @@
 #include "General.h"
 
 
+
 int	 writeStringToFile(const char* str, FILE* fp, const char* msg)
 {
 	int length = (int)strlen(str);
@@ -64,6 +65,24 @@ char* readStringFromFile(FILE* fp, const char* msg)
 		return NULL;
 	}
 	if (fread(str, sizeof(char), length, fp) != length)
+	{
+		free(str);
+		puts(msg);
+		return NULL;
+	}
+	return str;
+}
+
+char* readNameFromCompressedFile(FILE* fp, int nameLen,const char* msg)
+{
+	char* str;
+	str = (char*)malloc((nameLen) * sizeof(char));
+	if (!str)
+	{
+		puts(msg);
+		return NULL;
+	}
+	if (fread(str, sizeof(char), nameLen, fp) != nameLen)
 	{
 		free(str);
 		puts(msg);
