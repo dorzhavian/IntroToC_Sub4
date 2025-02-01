@@ -23,7 +23,7 @@ int initSuperMarket(SuperMarket* pMarket, const char* fileName,const char* custo
 	pMarket->productArr = NULL;
 	pMarket->sortOpt = eNone;
 
-	if (strcmp(fileName, "SuperMarket") == 0)
+	if (strcmp(fileName, "SuperMarket.bin") == 0)
 	{
 		if (loadSuperMarketFromFile(pMarket, fileName, customersFileName) == 1)
 		{
@@ -230,8 +230,7 @@ int	manageShoppingCart(SuperMarket* pMarket)
 	char answer;
 
 	CHECK_RETURN_0(pCustomer)
-	//if(!pCustomer)
-	//	return 0;
+	
 
 	printf("Do you want to pay for the cart? y/Y, anything else to cancel shopping!\t");
 	do {

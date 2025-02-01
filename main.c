@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 
 	if (argc != 3)
 	{
-		printf("Should enter 0 for binary file or 1 for compressed binary file");
+		printf("Should enter 2 arguments");
 		system("pause");
 		return;
 	}
@@ -26,8 +26,15 @@ int main(int argc, char* argv[])
 		system("pause");
 		return;
 	}
+	if (opt != 1 && opt != 0)
+	{
+		printf("Should enter 0 for binary file or 1 for compressed binary file");
+		system("pause");
+		return;
+	}
 
-	if (!initSuperMarket(&market, argv[1], CUSTOMER_FILE_NAME))
+
+	if (!initSuperMarket(&market, argv[2], CUSTOMER_FILE_NAME))
 	{
 		printf("error init Super Market");
 		return 0;
@@ -94,19 +101,16 @@ int main(int argc, char* argv[])
 
 	handleCustomerStillShoppingAtExit(&market);
 
-	if (!saveSuperMarketToFile(&market, argv[1], CUSTOMER_FILE_NAME))
-		printf("Error saving supermarket to file\n");
-
-	//if (strcmp(argv[1], SUPER_FILE_NAME))
-	//{
-	//	if (!saveSuperMarketToFile(&market, argv[1], CUSTOMER_FILE_NAME))
-	//		printf("Error saving supermarket to file\n");
-	//}
-	//else
-	//{
-	//	if (!saveSuperMarketToCompressedFile(&market, argv[1], CUSTOMER_FILE_NAME))
-	//		printf("Error saving supermarket to file\n");
-	//}
+	if (strcmp(argv[2], SUPER_FILE_NAME) == 0)
+	{
+		if (!saveSuperMarketToFile(&market, argv[2], CUSTOMER_FILE_NAME))
+			printf("Error saving supermarket to file\n");
+	}
+	else
+	{
+		if (!saveSuperMarketToCompressedFile(&market, argv[2], CUSTOMER_FILE_NAME))
+			printf("Error saving supermarket to file\n");
+	}
 
 	freeMarket(&market);
 

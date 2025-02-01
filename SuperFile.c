@@ -221,14 +221,15 @@ int	saveSuperMarketToCompressedFile(const SuperMarket* pMarket, const char* file
 	CHECK_MSG_RETURN_0(fp, "Error open supermarket file to write\n")
 
 	BYTE data1[2];
+	int marketNameLen = (int)strlen(pMarket->name);
 	
 	data1[0] = pMarket->productCount >> 2;
-	data1[1] = (pMarket->productCount << 8) | (int)strlen(pMarket->name);
+	data1[1] = ((pMarket->productCount & 0x3) << 6) | marketNameLen;
 
 	if (fwrite(&data1, sizeof(BYTE), 2, fp) != 2)
 		CLOSE_RETURN_0(fp)
 
-	if (!writeStringToFile(pMarket->name, fp, "Error write supermarket name\n"))
+	if (fwrite(pMarket->name, sizeof(char), marketNameLen, fp) != marketNameLen)
 		CLOSE_RETURN_0(fp)
 
 	for (int i = 0; i < pMarket->productCount; i++)

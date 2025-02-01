@@ -300,7 +300,7 @@ int		saveProductToCompressedFile(Product* pProduct, FILE* fp)
 
 	char barcodeNumbersStr[6] = {pProduct->barcode[2], pProduct->barcode[3], pProduct->barcode[4], pProduct->barcode[5], pProduct->barcode[6], '\0'};
 
-	if (sscanf(barcodeNumbersStr, "%d", &numBarcode) != 5)
+	if (sscanf(barcodeNumbersStr, "%d", &numBarcode) != 1)
 		return 0;
 
 	num1 = numBarcode / 10000;
@@ -315,6 +315,11 @@ int		saveProductToCompressedFile(Product* pProduct, FILE* fp)
 	data2[3] = nameLen << 6;
 
 	if (fwrite(data2, sizeof(BYTE), 4, fp) != 4)
+		return 0;
+
+	int productNameLen = (int)strlen(pProduct->name);
+
+	if (fwrite(pProduct->name, sizeof(char), productNameLen, fp) != productNameLen)
 		return 0;
 
 	BYTE data3[3];
