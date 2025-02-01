@@ -94,12 +94,22 @@ int main(int argc, char* argv[])
 
 	handleCustomerStillShoppingAtExit(&market);
 
-	if (!saveSuperMarketToFile(&market, SUPER_FILE_NAME, CUSTOMER_FILE_NAME))
+	if (!saveSuperMarketToFile(&market, argv[1], CUSTOMER_FILE_NAME))
 		printf("Error saving supermarket to file\n");
+
+	//if (strcmp(argv[1], SUPER_FILE_NAME))
+	//{
+	//	if (!saveSuperMarketToFile(&market, argv[1], CUSTOMER_FILE_NAME))
+	//		printf("Error saving supermarket to file\n");
+	//}
+	//else
+	//{
+	//	if (!saveSuperMarketToCompressedFile(&market, argv[1], CUSTOMER_FILE_NAME))
+	//		printf("Error saving supermarket to file\n");
+	//}
 
 	freeMarket(&market);
 
-	
 	return 1;
 }
 

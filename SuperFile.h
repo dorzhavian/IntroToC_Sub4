@@ -6,7 +6,6 @@
 
 typedef unsigned char BYTE;
 
-
 int		saveSuperMarketToFile(const SuperMarket* pMarket, const char* fileName,
 	const char* customersFileName);
 int		loadSuperMarketFromFile(SuperMarket* pMarket, const char* fileName,
@@ -17,7 +16,7 @@ Customer* loadCustomersFromTextFile(const char* customersFileName, int* pCount);
 void		freeCustomerCloseFile(Customer* customerArr, int customerIndex, FILE* fp);
 
 int	loadSuperMarketFromCompressedFile(SuperMarket* pMarket, const char* fileName, const char* customersFileName);
-
+int	saveSuperMarketToCompressedFile(const SuperMarket* pMarket, const char* fileName, const char* customersFileName);
 
 
 

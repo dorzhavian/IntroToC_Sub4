@@ -2,6 +2,7 @@
 
 #define EXIT -1
 #define SUPER_FILE_NAME "SuperMarket.bin"
+#define SUPER_FILE_COMPREESED_NAME "SuperMarket_Compress.bin"
 #define CUSTOMER_FILE_NAME "Customers.txt"
 
 typedef enum

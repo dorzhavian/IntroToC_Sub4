@@ -23,7 +23,7 @@ int initSuperMarket(SuperMarket* pMarket, const char* fileName,const char* custo
 	pMarket->productArr = NULL;
 	pMarket->sortOpt = eNone;
 
-	if (strcmp(fileName, "SuperMarket.bin") == 0)
+	if (strcmp(fileName, "SuperMarket") == 0)
 	{
 		if (loadSuperMarketFromFile(pMarket, fileName, customersFileName) == 1)
 		{
@@ -40,12 +40,9 @@ int initSuperMarket(SuperMarket* pMarket, const char* fileName,const char* custo
 		}
 	}
 
-
 	pMarket->name = getStrExactLength("Enter market name");
 
 	CHECK_RETURN_0(pMarket->name)
-	//if (!pMarket->name)
-		//return 0;
 
 	return 1;
 }
@@ -599,7 +596,7 @@ void handleCustomerStillShoppingAtExit(SuperMarket* pMarket)
 	}
 }
 
-void printMessage(const char* str, ...)
+void printMessage(char* str, ...)
 {
 	va_list strings;
 	char* currStr;

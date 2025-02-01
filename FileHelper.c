@@ -76,7 +76,7 @@ char* readStringFromFile(FILE* fp, const char* msg)
 char* readNameFromCompressedFile(FILE* fp, int nameLen,const char* msg)
 {
 	char* str;
-	str = (char*)malloc((nameLen) * sizeof(char));
+	str = (char*)calloc((nameLen) + 1 , sizeof(char));
 	if (!str)
 	{
 		puts(msg);

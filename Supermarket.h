@@ -57,4 +57,4 @@ void		freeProducts(SuperMarket* pMarket);
 void		freeCustomers(SuperMarket* pMarket);
 void		handleCustomerStillShoppingAtExit(SuperMarket* pMarket);
 
-void		printMessage(const char* str, ...);
+void		printMessage(char* str, ...);

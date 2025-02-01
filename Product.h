@@ -21,6 +21,8 @@ typedef struct
 	Date			expiryDate;
 }Product;
 
+typedef unsigned char BYTE;
+
 void			initProduct(Product* pProduct);
 void			initProductNoBarcode(Product* pProduct);
 void			initProductName(Product* pProduct);
@@ -44,3 +46,6 @@ int				compareProductsByPrice(const void* prod1, const void* prod2);
 
 void			updateProductCount(Product* pProduct);
 void			freeProduct(Product* pProduct);
+
+int				loadProductFromCompressedFile(Product* pProduct, FILE* fp);
+int				saveProductToCompressedFile(Product* pProduct, FILE* fp);

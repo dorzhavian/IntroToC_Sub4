@@ -18,4 +18,4 @@ int				insertNewShoppingItemToList(LIST* pShoppingList, ShoppingItem* pitem);
 void			freeShoppingCart(ShoppingCart* pCart);
 
 
-#define DETAIL_PRINT
+//#define DETAIL_PRINT
