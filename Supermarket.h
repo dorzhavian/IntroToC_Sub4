@@ -19,7 +19,7 @@ typedef struct
 }SuperMarket;
 
 
-int			initSuperMarket(SuperMarket* pMarket, const char* fileName, const char* customersFileName);
+int			initSuperMarket(SuperMarket* pMarket, const char* fileName, int isCompressed, const char* customersFileName);
 void		printSuperMarket(const SuperMarket* pMarket);
 int			addProduct(SuperMarket* pMarket);
 int			addNewProduct(SuperMarket* pMarket);

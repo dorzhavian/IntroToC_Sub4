@@ -15,7 +15,7 @@
 static const char* sortOptStr[eNofSortOpt] = { "None", "Name", "Count", "Price" };
 
 
-int initSuperMarket(SuperMarket* pMarket, const char* fileName,const char* customersFileName)
+int initSuperMarket(SuperMarket* pMarket, const char* fileName, int isCompressed, const char* customersFileName)
 {
 	pMarket->customerCount = 0;
 	pMarket->customerArr = NULL;
@@ -23,7 +23,8 @@ int initSuperMarket(SuperMarket* pMarket, const char* fileName,const char* custo
 	pMarket->productArr = NULL;
 	pMarket->sortOpt = eNone;
 
-	if (strcmp(fileName, "SuperMarket.bin") == 0)
+
+	if (!isCompressed)
 	{
 		if (loadSuperMarketFromFile(pMarket, fileName, customersFileName) == 1)
 		{

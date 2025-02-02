@@ -15,26 +15,26 @@ int main(int argc, char* argv[])
 
 	if (argc != 3)
 	{
-		printf("Should enter 2 arguments");
+		printf("Should enter 2 arguments\n");
 		system("pause");
 		return;
 	}
 	int opt;
 	if (sscanf(argv[1], "%d", &opt) != 1)
 	{
-		printf("Should enter 0 for binary file or 1 for compressed binary file");
+		printf("Should enter 0 for binary file or 1 for compressed binary file\n");
 		system("pause");
 		return;
 	}
 	if (opt != 1 && opt != 0)
 	{
-		printf("Should enter 0 for binary file or 1 for compressed binary file");
+		printf("Should enter 0 for binary file or 1 for compressed binary file\n");
 		system("pause");
 		return;
 	}
 
 
-	if (!initSuperMarket(&market, argv[2], CUSTOMER_FILE_NAME))
+	if (!initSuperMarket(&market, argv[2], opt, CUSTOMER_FILE_NAME))
 	{
 		printf("error init Super Market");
 		return 0;
